@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+        <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+    </head>
+
+    <body style="margin: 0; overflow: hidden;">
+        <a-scene
+            vr-mode-ui="enabled: false;"
+            loading-screen="enabled: false;"
+            renderer="logarithmicDepthBuffer: true;"
+            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+            id="scene"
+            embedded
+            gesture-detector
+        >
+            <a-assets>
+                <!-- NO.1 model -->
+                <a-asset-item id="camera-asset" src="./assets/camera.glb"></a-asset-item>
+
+                <!-- NO.2 model -->
+                <a-asset-item id="knife-asset" src="./assets/knife.glb"></a-asset-item>
+            </a-assets>
+
+            <!-- NO.1 marker (m01) -->
+            <a-marker
+                id="markerA"
+                type="pattern"
+                preset="custom"
+                url="assets/m01.patt"
+                raycaster="objects: .clickable"
+                emitevents="true"
+                cursor="fuse: false; rayOrigin: mouse;"
+            >
+                <a-entity
+                    id="camera-model"
+                    scale="6.94884 6.94884 6.94884"
+                    animation-mixer="loop: repeat"
+                    gltf-model="#camera-asset"
+                    class="clickable"
+                    gesture-handler
+                ></a-entity>
+            </a-marker>
+
+            <!-- NO.2 marker (m02) -->
+            <a-marker
+                id="markerB"
+                type="pattern"
+                preset="custom"
+                url="assets/m02.patt"
+                raycaster="objects: .clickable"
+                emitevents="true"
+                cursor="fuse: false; rayOrigin: mouse;"
+            >
+                <a-entity
+                    id="knife-model"
+                    scale="1 1 1"
+                    position="0 0 0"
+                    rotation="0 0 0"
+                    gltf-model="#knife-asset"
+                    class="clickable"
+                    gesture-handler
+                ></a-entity>
+            </a-marker>
+
+            <a-entity camera></a-entity>
+        </a-scene>
+    </body>
+</html>
