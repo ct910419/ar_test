@@ -12,7 +12,7 @@
     <a-scene
       vr-mode-ui="enabled: false;"
       loading-screen="enabled: false;"
-      renderer="logarithmicDepthBuffer: true;"
+      renderer="logarithmicDepthBuffer: true; colorManagement: true;"
       arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
       embedded
       gesture-detector
@@ -95,10 +95,13 @@
       </a-marker>
 
 
-      <!-- light -->
+      <!-- light 
       <a-entity light="type: ambient; intensity: 1"></a-entity>
-      <a-entity light="type: directional; intensity: 1.2" position="1 1 0"></a-entity>
-
+      <a-entity light="type: directional; intensity: 1.2" position="1 1 0"></a-entity> -->
+      
+      <a-entity light="type: ambient; color: #FFF; intensity: 1.2"></a-entity>
+      <a-entity light="type: directional; color: #FFF; intensity: 1.5" position="0 2 1"></a-entity>
+      
       <a-entity camera></a-entity>
     </a-scene>
   </body>
