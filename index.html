@@ -20,6 +20,7 @@
       <a-assets>
         <a-asset-item id="camera-asset" src="./assets/camera.glb"></a-asset-item>
         <a-asset-item id="knife-asset" src="./assets/knife.glb"></a-asset-item>
+        <a-asset-item id="vintage-camera-asset" src="./assets/vintage_camera.glb"></a-asset-item>
       </a-assets>
 
       <!-- Marker 1 -->
@@ -36,6 +37,25 @@
           rotation="270 0 0"
           position="0 0 0.3"
           gltf-model="#camera-asset"
+          class="clickable"
+          gesture-handler
+        ></a-entity>
+      </a-marker>
+      
+      <!-- Marker 1 0.6 -->
+      <a-marker
+        type="pattern"
+        preset="custom"
+        url="assets/m01-0.6.patt"
+        raycaster="objects: .clickable"
+        emitevents="true"
+        cursor="fuse: false; rayOrigin: mouse;"
+      >
+        <a-entity
+          scale="10 10 10"
+          rotation="270 0 0"
+          position="0 0 0.3"
+          gltf-model="#vintage-camera-asset"
           class="clickable"
           gesture-handler
         ></a-entity>
